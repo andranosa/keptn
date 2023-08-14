@@ -70,23 +70,23 @@ keptn.keptnConfigureMonitoring monitoring:"dynatrace"
 // ------------------------------------------
 // Start a quality gate evaluation. There are multiple timeframe options, e.g: using timestamps or number minutes from Now()
 // Example #1: Evaluate the last 10 minutes
-def keptnContext = keptn.sendStartEvaluationEvent starttime:"600", endtime:"0" 
+// def keptnContext = keptn.sendStartEvaluationEvent starttime:"600", endtime:"0" 
 
 // Example #2: Evaluate the previous hour. End=Now()-3600, Start=Now()-7200
-def keptnContext = keptn.sendStartEvaluationEvent starttime:"7200", endtime:"3600" 
+// def keptnContext = keptn.sendStartEvaluationEvent starttime:"7200", endtime:"3600" 
 
 // Example #3: Evaluate a specific timeframe
-def keptnContext = keptn.sendStartEvaluationEvent starttime:"2019-06-07T07:00:00.0000Z", endtime:"2019-06-07T08:00:00.0000Z", labels: labels
+// def keptnContext = keptn.sendStartEvaluationEvent starttime:"2019-06-07T07:00:00.0000Z", endtime:"2019-06-07T08:00:00.0000Z", labels: labels
 
 // Example #4: Mark a starting timestamp before executing your tests
 // Following example will fill starttime with the time when you called markEvaluationStartTime and as end is empty will default to Now()
-keptn.markEvaluationStartTime()
+// keptn.markEvaluationStartTime()
 
 // ... 
 // ^^^ here is where you would execute any existing tests
 
 // Send a test.finished event
-def keptnContext = keptn.sendFinishedEvent eventType: "test", keptnContext: "${params.shkeptncontext}", triggeredId: "${params.triggeredid}", result:"pass", status:"succeeded"
+// def keptnContext = keptn.sendFinishedEvent eventType: "test", keptnContext: "${params.shkeptncontext}", triggeredId: "${params.triggeredid}", result:"pass", status:"succeeded"
 echo "Open Keptns Bridge: ${keptn_bridge}/trace/${keptnContext}"
 
 
@@ -95,12 +95,12 @@ echo "Open Keptns Bridge: ${keptn_bridge}/trace/${keptnContext}"
 // trigger a delivery with a container image.
 // Typically you would use your Jenkins to build and push a container to your container registry. 
 // After that you notify Keptn about it
-def keptnContext = keptn.sendDeliveryTriggeredEvent image:"docker.io/myorg/my-image:1.2.3"
-String keptn_bridge = env.KEPTN_BRIDGE
-echo "Open Keptns Bridge: ${keptn_bridge}/trace/${keptnContext}"
+// def keptnContext = keptn.sendDeliveryTriggeredEvent image:"docker.io/myorg/my-image:1.2.3"
+// String keptn_bridge = env.KEPTN_BRIDGE
+// echo "Open Keptns Bridge: ${keptn_bridge}/trace/${keptnContext}"
 
 // --------------------------------------------
 // Waiting for Quality Gate Result (5 Minutes)
 // --------------------------------------------
-def result = keptn.waitForEvaluationDoneEvent setBuildResult:true, waitTime:5
+// def result = keptn.waitForEvaluationDoneEvent setBuildResult:true, waitTime:5
 echo "${result}"
