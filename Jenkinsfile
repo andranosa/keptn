@@ -1,5 +1,5 @@
 import sh.keptn.Keptn
-def keptn = new sh.keptn.Keptn()
+// def keptn = new sh.keptn.Keptn()
 
 
 // Initialize Keptn: "Link" it to your Jenkins Pipeline
