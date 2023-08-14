@@ -27,7 +27,7 @@ keptn.keptnInit project:"dynatrace", service:"autser", stage:"quality-gate", shi
 // First parameter defines the file in your local Jenkins Workspace, the second one the location Keptn will use to store it in its own Git
 keptn.keptnAddResources('keptn/sli.yaml','dynatrace/sli.yaml')
 keptn.keptnAddResources('keptn/slo.yaml','slo.yaml')
-keptn.keptnAddResources('keptn/dynatrace.conf.yaml','dynatrace/dynatrace.conf.yaml')
+keptn.keptnAddResources('keptn/dynatrace/dynatrace.conf.yaml','dynatrace/dynatrace.conf.yaml')
 // OR in case you use prometheus:
 // keptn.keptnAddResources('keptn/sli.yaml','prometheus/sli.yaml')
 
