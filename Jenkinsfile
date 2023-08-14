@@ -40,8 +40,8 @@ keptn.keptnConfigureMonitoring monitoring:"dynatrace"
 
 // Custom Labels
 // all keptn.send** functions have an optional parameter called labels. It is a way to pass custom labels to the sent event
-def labels=[:]
-labels.put('TriggeredBy', 'Andi')
+// def labels=[:]
+// labels.put('TriggeredBy', 'Andi')
 
 
 // Send Finished Event Use Case
@@ -50,19 +50,19 @@ labels.put('TriggeredBy', 'Andi')
 // keptn.sendFinishedEvent functions have optional event type payload, depending on the type of an event
 
 // Example #1: Send a finished Event for a test task
-def eventTypePayload=[:]
-eventTypePayload.put('start', '2019-06-07T07:00:00.0000Z')
-eventTypePayload.put('end', '2019-06-07T08:00:00.0000Z')
-def keptnContext = keptn.sendFinishedEvent eventType: "test", keptnContext: "${params.shkeptncontext}", triggeredId: "${params.triggeredid}", result:"pass", status:"succeeded", eventTypePayload: eventTypePayload, lables: lables
+// def eventTypePayload=[:]
+// eventTypePayload.put('start', '2019-06-07T07:00:00.0000Z')
+// eventTypePayload.put('end', '2019-06-07T08:00:00.0000Z')
+// def keptnContext = keptn.sendFinishedEvent eventType: "test", keptnContext: "${params.shkeptncontext}", triggeredId: "${params.triggeredid}", result:"pass", status:"succeeded", eventTypePayload: eventTypePayload, lables: lables
 
 
 
 // Example #2: Send a finished Event for a deployment task
 // keptn.sendFinishedEvent functions have optional event type payload - example payload for keptn.sendFinishedEvent eventType: "deployment"
-def eventTypePayload=[:]
-eventTypePayload.put('deploymentstrategy', 'direct')
-eventTypePayload.put('deploymentURIsLocal', ['carts.sockshop-staging.svc.cluster.local','another.cartsUri.local'])
-def keptnContext = keptn.sendFinishedEvent eventType: "deployment", keptnContext: "${params.shkeptncontext}", triggeredId: "${params.triggeredid}", result:"pass", status:"succeeded", eventTypePayload: eventTypePayload, lables: lables
+// def eventTypePayload=[:]
+// eventTypePayload.put('deploymentstrategy', 'direct')
+// eventTypePayload.put('deploymentURIsLocal', ['carts.sockshop-staging.svc.cluster.local','another.cartsUri.local'])
+// def keptnContext = keptn.sendFinishedEvent eventType: "deployment", keptnContext: "${params.shkeptncontext}", triggeredId: "${params.triggeredid}", result:"pass", status:"succeeded", eventTypePayload: eventTypePayload, lables: lables
 
 
 
