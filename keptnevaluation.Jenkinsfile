@@ -1,12 +1,12 @@
-@Library('keptn-library@3.5')_
+@Library('keptn-library@6.0.0')
 def keptn = new sh.keptn.Keptn()
 
 node {
     properties([
         parameters([
-         string(defaultValue: 'qgproject', description: 'Name of your Keptn Project for Quality Gate Feedback ', name: 'Project', trim: false), 
-         string(defaultValue: 'qualitystage', description: 'Stage in your Keptn project used for for Quality Gate Feedback', name: 'Stage', trim: false), 
-         string(defaultValue: 'evalservice', description: 'Servicename used to keep SLIs and SLOs', name: 'Service', trim: false),
+         string(defaultValue: 'dynatrace', description: 'Name of your Keptn Project for Quality Gate Feedback ', name: 'Project', trim: false), 
+         string(defaultValue: 'quality-gate', description: 'Stage in your Keptn project used for for Quality Gate Feedback', name: 'Stage', trim: false), 
+         string(defaultValue: 'autser', description: 'Servicename used to keep SLIs and SLOs', name: 'Service', trim: false),
          choice(choices: ['dynatrace', 'prometheus',''], description: 'Select which monitoring tool should be configured as SLI provider', name: 'Monitoring', trim: false),
          choice(choices: ['basic', 'perftest'], description: 'Decide which set of SLIs you want to evaluate. The sample comes with: basic and perftest', name: 'SLI'),
          string(defaultValue: '660', description: 'Start timestamp or number of seconds from Now()', name: 'StartTime', trim: false),
@@ -17,23 +17,31 @@ node {
 
     stage('Initialize Keptn') {
         // keptn.downloadFile("https://raw.githubusercontent.com/keptn-sandbox/performance-testing-as-selfservice-tutorial/master/shipyard.yaml", 'keptn/shipyard.yaml')
-        keptn.downloadFile("https://raw.githubusercontent.com/keptn-sandbox/jenkins-tutorial/master/usecases/uc1_qualitygates/keptn/dynatrace/dynatrace.conf.yaml", 'keptn/dynatrace/dynatrace.conf.yaml')
-        keptn.downloadFile("https://raw.githubusercontent.com/keptn-sandbox/jenkins-tutorial/master/usecases/uc1_qualitygates/keptn/slo_${params.SLI}.yaml", 'keptn/slo.yaml')
-        keptn.downloadFile("https://raw.githubusercontent.com/keptn-sandbox/jenkins-tutorial/master/usecases/uc1_qualitygates/keptn/dynatrace/sli_${params.SLI}.yaml", 'keptn/sli.yaml')
+        // keptn.downloadFile("https://raw.githubusercontent.com/keptn-sandbox/jenkins-tutorial/master/usecases/uc1_qualitygates/keptn/dynatrace/dynatrace.conf.yaml", 'keptn/dynatrace/dynatrace.conf.yaml')
+        keptn.downloadFile("https://github.com/andranosa/keptn/blob/master/dynatrace/dynatrace.conf.yaml", 'keptn/blob/master/dynatrace/dynatrace.conf.yaml')
+        // keptn.downloadFile("https://raw.githubusercontent.com/keptn-sandbox/jenkins-tutorial/master/usecases/uc1_qualitygates/keptn/slo_${params.SLI}.yaml", 'keptn/slo.yaml')
+        keptn.downloadFile("https://github.com/andranosa/keptn/blob/quality-gate/autser/slo.yaml", 'keptn/blob/quality-gate/autser/slo.yaml')
+        // keptn.downloadFile("https://raw.githubusercontent.com/keptn-sandbox/jenkins-tutorial/master/usecases/uc1_qualitygates/keptn/dynatrace/sli_${params.SLI}.yaml", 'keptn/sli.yaml')
+        keptn.downloadFile("https://github.com/andranosa/keptn/blob/quality-gate/autser/dynatrace/sli.yaml", 'keptn/blob/autser/dynatrace/sli.yaml')
         archiveArtifacts artifacts:'keptn/**/*.*'
 
         // Initialize the Keptn Project - ensures the Keptn Project is created with the passed shipyard
-        keptn.keptnInit project:"${params.Project}", service:"${params.Service}", stage:"${params.Stage}", monitoring:"${monitoring}" // , shipyard:'shipyard.yaml'
-
+        // keptn.keptnInit project:"${params.Project}", service:"${params.Service}", stage:"${params.Stage}", monitoring:"${monitoring}" // , shipyard:'shipyard.yaml'
+        keptn.keptnConfigureMonitoring project:"${params.Project}", service:"${params.Service}", monitoring:"${monitoring}", keptn_endpoint:"http://10.5.10.11:80/api", keptn_api_token:"GQKW4Zgt4YfnGjhkGxKW65sosZkj13MktN14eeErRi9Zh" //, shipyard:'shipyard.yaml'
+    
         // Upload all the files
-        keptn.keptnAddResources('keptn/dynatrace/dynatrace.conf.yaml','dynatrace/dynatrace.conf.yaml')
-        keptn.keptnAddResources('keptn/sli.yaml','dynatrace/sli.yaml')
-        keptn.keptnAddResources('keptn/slo.yaml','slo.yaml')
+        // keptn.keptnAddResources('keptn/dynatrace/dynatrace.conf.yaml','dynatrace/dynatrace.conf.yaml')
+        // keptn.keptnAddResources('keptn/blob/master/dynatrace/dynatrace.conf.yaml','dynatrace/dynatrace.conf.yaml')
+        // keptn.keptnAddResources('keptn/sli.yaml','dynatrace/sli.yaml')
+        // keptn.keptnAddResources('keptn/slo.yaml','slo.yaml')
+        // keptn.keptnAddResources('keptn/blob/autser/dynatrace/sli.yaml','dynatrace/sli.yaml')
+        // keptn.keptnAddResources('keptn/blob/quality-gate/autser/slo.yaml','slo.yaml')
     }
     stage('Trigger Quality Gate') {
         echo "Quality Gates ONLY: Just triggering an SLI/SLO-based evaluation for the passed timeframe"
 
         // Trigger an evaluation
+        keptn.keptnConfigureMonitoring project:"${params.Project}", service:"${params.Service}", monitoring:"${monitoring}", keptn_endpoint:"http://10.5.10.11:80/api", keptn_api_token:"GQKW4Zgt4YfnGjhkGxKW65sosZkj13MktN14eeErRi9Zh"
         def keptnContext = keptn.sendStartEvaluationEvent starttime:"${params.StartTime}", endtime:"${params.EndTime}" 
         String keptn_bridge = env.KEPTN_BRIDGE
         echo "Open Keptns Bridge: ${keptn_bridge}/trace/${keptnContext}"
