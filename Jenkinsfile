@@ -42,9 +42,9 @@ node {
 
         // Trigger an evaluation
         keptn.keptnConfigureMonitoring project:"${params.Project}", service:"${params.Service}", monitoring:"${monitoring}", keptn_endpoint:"http://10.5.10.11:80/api", keptn_api_token:"GQKW4Zgt4YfnGjhkGxKW65sosZkj13MktN14eeErRi9Zh"
-        def keptnContext = keptn.sendStartEvaluationEvent starttime:"${params.StartTime}", endtime:"${params.EndTime}" 
-        String keptn_bridge = env.KEPTN_BRIDGE
-        echo "Open Keptns Bridge: ${keptn_bridge}/trace/${keptnContext}"
+        //def keptnContext = keptn.sendStartEvaluationEvent starttime:"${params.StartTime}", endtime:"${params.EndTime}" 
+        //String keptn_bridge = env.KEPTN_BRIDGE
+        //echo "Open Keptns Bridge: ${keptn_bridge}/trace/${keptnContext}"
     }
     stage('Wait for Result') {
         waitTime = 0
