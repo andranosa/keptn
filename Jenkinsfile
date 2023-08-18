@@ -1,6 +1,7 @@
 @Library('keptn-library@6.0.0')
 def keptn = new sh.keptn.Keptn()
 
+pipeline {
 node {
     properties([
         parameters([
@@ -60,4 +61,5 @@ node {
             echo "Not waiting for results. Please check the Keptns bridge for the details!"
         }
     }
+}
 }
