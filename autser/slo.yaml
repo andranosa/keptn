@@ -6,28 +6,16 @@ comparison:
     number_of_comparison_results: 1
     aggregate_function: avg
 objectives:
-    - sli: cpu_usage
-      displayName: CPU Usage
-      pass:
-        - criteria:
-            - '>=0.000000'
-            - <5.000000
-      warning:
-        - criteria:
-            - '>=0.000000'
-            - <10.000000
-      weight: 1
-      key_sli: false
     - sli: failure_rate
       displayName: Failure Rate
-      pass:
-        - criteria:
-            - '>=0.000000'
-            - <5.000000
-      warning:
-        - criteria:
-            - '>=0.000000'
-            - <10.000000
+      pass: []
+      warning: []
+      weight: 1
+      key_sli: false
+    - sli: cpu_usage
+      displayName: CPU Usage
+      pass: []
+      warning: []
       weight: 1
       key_sli: false
 total_score:
