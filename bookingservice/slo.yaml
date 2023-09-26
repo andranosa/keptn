@@ -16,18 +16,6 @@ objectives:
             - '>=99.980000'
       weight: 1
       key_sli: false
-    - sli: rt_storebooking
-      displayName: rt_storebooking
-      pass:
-        - criteria:
-            - '>=0.000000'
-            - <2500000.000000
-      warning:
-        - criteria:
-            - '>=0.000000'
-            - <5000000.000000
-      weight: 1
-      key_sli: false
     - sli: rt_getrecentbooking
       displayName: rt_getrecentbooking
       pass:
@@ -74,6 +62,18 @@ objectives:
         - criteria:
             - '>=0.000000'
             - <40.000000
+      weight: 1
+      key_sli: false
+    - sli: rt_storebooking
+      displayName: rt_storebooking
+      pass:
+        - criteria:
+            - '>=0.000000'
+            - <1000000.000000
+      warning:
+        - criteria:
+            - '>=0.000000'
+            - <2000000.000000
       weight: 1
       key_sli: false
 total_score:
