@@ -40,6 +40,12 @@ objectives:
             - <80.000000
       weight: 1
       key_sli: false
+    - sli: graph
+      displayName: Graph
+      pass: []
+      warning: []
+      weight: 1
+      key_sli: false
 total_score:
     pass: 90%
     warning: 75%
