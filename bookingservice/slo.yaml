@@ -16,16 +16,52 @@ objectives:
             - '>=99.980000'
       weight: 1
       key_sli: false
+    - sli: rt_storebooking
+      displayName: rt_storebooking
+      pass:
+        - criteria:
+            - '>=0.000000'
+            - <2500000.000000
+      warning:
+        - criteria:
+            - '>=0.000000'
+            - <5000000.000000
+      weight: 1
+      key_sli: false
+    - sli: rt_getrecentbooking
+      displayName: rt_getrecentbooking
+      pass:
+        - criteria:
+            - '>=0.000000'
+            - <150000.000000
+      warning:
+        - criteria:
+            - '>=0.000000'
+            - <300000.000000
+      weight: 1
+      key_sli: false
+    - sli: rt_checkcreditcard
+      displayName: rt_checkcreditcard
+      pass:
+        - criteria:
+            - '>=0.000000'
+            - <2000000.000000
+      warning:
+        - criteria:
+            - '>=0.000000'
+            - <4000000.000000
+      weight: 1
+      key_sli: false
     - sli: failure_rate
       displayName: Failure Rate
       pass:
         - criteria:
             - '>=0.000000'
-            - <100.000000
+            - <15.000000
       warning:
         - criteria:
             - '>=0.000000'
-            - <120.000000
+            - <30.000000
       weight: 1
       key_sli: false
     - sli: cpu_usage
@@ -33,41 +69,11 @@ objectives:
       pass:
         - criteria:
             - '>=0.000000'
-            - <50.000000
+            - <20.000000
       warning:
         - criteria:
             - '>=0.000000'
-            - <80.000000
-      weight: 1
-      key_sli: false
-    - sli: creditcard
-      displayName: creditcard
-      pass:
-        - criteria:
-            - '>=2.000000'
-            - <4.000000
-      warning:
-        - criteria:
-            - '>=2.000000'
-            - <6.000000
-      weight: 1
-      key_sli: false
-    - sli: getrecentbooking
-      displayName: getrecentbooking
-      pass:
-        - criteria:
-            - '>=150.000000'
-            - <300.000000
-      warning:
-        - criteria:
-            - '>=150.000000'
-            - <450.000000
-      weight: 1
-      key_sli: false
-    - sli: storebooking
-      displayName: storebooking
-      pass: []
-      warning: []
+            - <40.000000
       weight: 1
       key_sli: false
 total_score:
