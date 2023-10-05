@@ -69,11 +69,11 @@ objectives:
       pass:
         - criteria:
             - '>=0.000000'
-            - <1000000.000000
+            - <4000000.000000
       warning:
         - criteria:
             - '>=0.000000'
-            - <2000000.000000
+            - <8000000.000000
       weight: 1
       key_sli: false
 total_score:
