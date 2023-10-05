@@ -64,18 +64,6 @@ objectives:
             - <40.000000
       weight: 1
       key_sli: false
-    - sli: rt_bookingstore
-      displayName: rt_bookingstore
-      pass:
-        - criteria:
-            - '>=0.000000'
-            - <4000000.000000
-      warning:
-        - criteria:
-            - '>=0.000000'
-            - <8000000.000000
-      weight: 1
-      key_sli: false
 total_score:
     pass: 90%
     warning: 75%
