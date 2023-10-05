@@ -76,6 +76,12 @@ objectives:
             - <2000000.000000
       weight: 1
       key_sli: false
+    - sli: storebooking
+      displayName: storebooking
+      pass: []
+      warning: []
+      weight: 1
+      key_sli: false
 total_score:
     pass: 90%
     warning: 75%
