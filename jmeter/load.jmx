@@ -9,7 +9,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="SERVER_URL" elementType="Argument">
             <stringProp name="Argument.name">SERVER_URL</stringProp>
-            <stringProp name="Argument.value">simplenode.simpleproject-staging.keptn06-agrabner.demo.keptn.sh</stringProp>
+            <stringProp name="Argument.value">haz078.dynatrace-managed.com</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="DefaultThinkTime" elementType="Argument">
@@ -24,7 +24,7 @@
           </elementProp>
           <elementProp name="SERVER_PORT" elementType="Argument">
             <stringProp name="Argument.name">SERVER_PORT</stringProp>
-            <stringProp name="Argument.value">80</stringProp>
+            <stringProp name="Argument.value">443</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="LoopCount" elementType="Argument">
@@ -39,7 +39,7 @@
           </elementProp>
           <elementProp name="PROTOCOL" elementType="Argument">
             <stringProp name="Argument.name">PROTOCOL</stringProp>
-            <stringProp name="Argument.value">http</stringProp>
+            <stringProp name="Argument.value">https</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="VUCount" elementType="Argument">
@@ -150,7 +150,7 @@ hm.add(new org.apache.jmeter.protocol.http.control.Header(&quot;x-dynatrace-test
           <stringProp name="ConstantTimer.delay">250</stringProp>
         </ConstantTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="version" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="cluster version" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
