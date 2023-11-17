@@ -6,14 +6,10 @@ comparison:
     number_of_comparison_results: 1
     aggregate_function: avg
 objectives:
-    - sli: fastcreditcardrequests_slo
+    - sli: slo_640ddcdc-0e8a-31fb-9618-8381e090cb5b
       displayName: ""
-      pass:
-        - criteria:
-            - '>=99.990000'
-      warning:
-        - criteria:
-            - '>=99.980000'
+      pass: []
+      warning: []
       weight: 1
       key_sli: false
     - sli: rt_getrecentbooking
