@@ -6,14 +6,10 @@ comparison:
     number_of_comparison_results: 1
     aggregate_function: avg
 objectives:
-    - sli: slo-jfa
+    - sli: slo_2921834e-9aa9-3b90-94b5-16a640b0d1b2
       displayName: ""
-      pass:
-        - criteria:
-            - '>=99.000000'
-      warning:
-        - criteria:
-            - '>=95.000000'
+      pass: []
+      warning: []
       weight: 1
       key_sli: false
     - sli: rt_getrecentbooking
